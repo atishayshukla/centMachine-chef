@@ -1,3 +1,45 @@
+# Notes
+
+Since we are running chef exec rspec a lot, we can use GUARD.
+
+In the ruby it acts as a watcher for the file and then do some actions
+
+Guard is a gem, so to install it what we can do is create a file in the cookbook and say 'Gemfile'
+
+Refer to my Gemfile in redis cookbook which is in chef-practice repo
+
+Then after preparing gemfile do 'chef exec bundle install' to install them on your repo
+
+Then do chef exec guard
+
+Then finally do chef exec guard init -- This will give a Guardfile in the cookbook dir
+
+guard is not working lets skip it
+
+lets create lwrp
+
+chef generate lwrp <Name>
+
+give action in lwrp as :install
+
+
+
+guard :rspec, cmd: "chef exec rspec" do
+	require "guard/rspec/dsl"
+	dsl = Guard::Rspec::Dsl.new(self)
+
+  # Rspec files
+  rspec = dsl.rspec
+  watch(rspec.spec_helper) { rspec.spec_dir }
+  watch(rspec.spec_support) { rspec.spec_dir }
+  watch(rspec.spec_files)
+
+  # Recipe files
+  watch(%r{^r(recipes)/(.+)\.rb$}) { rspec.spec_dir }
+
+
+
+
 # Overview
 
 Every Chef installation needs a Chef Repository. This is the place where cookbooks, roles, config files and other artifacts for managing systems with Chef will live. We strongly recommend storing this repository in a version control system such as Git and treat it like source code.
