@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /tmp/chefspec20160730-28504-8waybofile_cache_path/cookbooks/redis/resources/default.rb @ line 15 self.action_install:
+
+    [1;34m10[0m: action [33m:install[0m [32mdo[0m
+    [1;34m11[0m: 
+    [1;34m12[0m: 	remote_file [31m[1;31m"[0m[31m/tmp/redis-#{version}[0m[31m.tar.gz[1;31m"[0m[31m[0m [32mdo[0m
+    [1;34m13[0m: 	  [1;34m# source "http://download.redis.io/releases/redis-#{version}.tar.gz"[0m
+    [1;34m14[0m: 	  require [31m[1;31m'[0m[31mpry[1;31m'[0m[31m[0m ; binding.pry
+ => [1;34m15[0m: 	  source source
+    [1;34m16[0m: 	  notifies [33m:run[0m, [31m[1;31m"[0m[31mexecute[tar xzf redis-#{version}[0m[31m.tar.gz][1;31m"[0m[31m[0m, [33m:immediately[0m
+    [1;34m17[0m: 	[32mend[0m
+    [1;34m18[0m: 
+    [1;34m19[0m: 	[1;34m# unzip the archive[0m
+    [1;34m20[0m: 	execute [31m[1;31m"[0m[31mtar xzf redis-#{version}[0m[31m.tar.gz[1;31m"[0m[31m[0m [32mdo[0m
+
